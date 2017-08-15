@@ -12,6 +12,7 @@
 		05E246441F1C387000EB26B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E246421F1C387000EB26B9 /* Main.storyboard */; };
 		05E246461F1C387000EB26B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05E246451F1C387000EB26B9 /* Assets.xcassets */; };
 		05E246491F1C387000EB26B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E246471F1C387000EB26B9 /* LaunchScreen.storyboard */; };
+		430433F22130A977C1C1B5CC /* libPods-solar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5DF2363A9EFD0D6DB244EC9 /* libPods-solar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		05E246451F1C387000EB26B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05E246481F1C387000EB26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05E2464A1F1C387000EB26B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2D87066880072E1E022D0D7 /* Pods-solar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-solar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-solar/Pods-solar.debug.xcconfig"; sourceTree = "<group>"; };
+		E5DF2363A9EFD0D6DB244EC9 /* libPods-solar.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-solar.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E73581EE16572F228994ED2D /* Pods-solar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-solar.release.xcconfig"; path = "Pods/Target Support Files/Pods-solar/Pods-solar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				430433F22130A977C1C1B5CC /* libPods-solar.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				05E2463D1F1C387000EB26B9 /* solar */,
 				05E2463C1F1C387000EB26B9 /* Products */,
+				5C475B06078F15AAFDCC28C6 /* Pods */,
+				159DF651B76B875E2E6D772D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = solar;
 			sourceTree = "<group>";
 		};
+		159DF651B76B875E2E6D772D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5DF2363A9EFD0D6DB244EC9 /* libPods-solar.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C475B06078F15AAFDCC28C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A2D87066880072E1E022D0D7 /* Pods-solar.debug.xcconfig */,
+				E73581EE16572F228994ED2D /* Pods-solar.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05E2464D1F1C387000EB26B9 /* Build configuration list for PBXNativeTarget "solar" */;
 			buildPhases = (
+				F6A7F0593147E7A95ACB706A /* [CP] Check Pods Manifest.lock */,
 				05E246371F1C387000EB26B9 /* Sources */,
 				05E246381F1C387000EB26B9 /* Frameworks */,
 				05E246391F1C387000EB26B9 /* Resources */,
+				4D527C7F6093B868D2DB6238 /* [CP] Embed Pods Frameworks */,
+				CCFD7FE462BF33A2D4CDBDFB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4D527C7F6093B868D2DB6238 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-solar/Pods-solar-frameworks.sh",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
+				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-solar/Pods-solar-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CCFD7FE462BF33A2D4CDBDFB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-solar/Pods-solar-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A7F0593147E7A95ACB706A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-solar-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		05E246371F1C387000EB26B9 /* Sources */ = {
@@ -267,6 +350,7 @@
 		};
 		05E2464E1F1C387000EB26B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2D87066880072E1E022D0D7 /* Pods-solar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D5C9R5U7RN;
@@ -281,6 +365,7 @@
 		};
 		05E2464F1F1C387000EB26B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E73581EE16572F228994ED2D /* Pods-solar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = D5C9R5U7RN;
@@ -312,6 +397,7 @@
 				05E2464F1F1C387000EB26B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
