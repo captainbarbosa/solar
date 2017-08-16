@@ -12,16 +12,18 @@ import Mapbox
 
 class ViewController: UIViewController, MGLMapViewDelegate {
     var timer: Timer?
-    var mapView: MGLMapView!
     var utcSecTime = 61979
+    
+    @IBOutlet weak var mapView: MGLMapView!
+    
+    @IBOutlet weak var timeView: UIView!
+    
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "mapbox://styles/mapbox/streets-v10")
-        mapView = MGLMapView(frame: view.bounds, styleURL: url)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setCenter(CLLocationCoordinate2D(latitude: 39.23225, longitude: -97.91015), zoomLevel: 5, animated: false)
-        view.addSubview(mapView)
         mapView.delegate = self
     }
     
@@ -50,6 +52,8 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.8107074058))])
             
         }
+        
+        timeLabel.text = "\(utcSecTime)"
     }
     
     func animateUmbraSelection() {
