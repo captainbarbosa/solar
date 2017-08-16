@@ -53,7 +53,29 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             
         }
         
-        timeLabel.text = "\(utcSecTime)"
+        timeLabel.text = "\(timeFormatted(utcSec: utcSecTime))"
+    }
+    
+    func timeFormatted(utcSec: Int) -> String {
+        let userCalendar = NSCalendar.current
+        var dateComponent = DateComponents()
+        
+        dateComponent.year = 2017
+        dateComponent.month = 09
+        dateComponent.day = 21
+        dateComponent.hour = Int(utcSec / 3600)
+        dateComponent.minute = Int((utcSec / 60) % 60)
+        dateComponent.second = Int(utcSec % 60)
+        dateComponent.timeZone = TimeZone(abbreviation: "EST")
+        
+        let dateTime = userCalendar.date(from: dateComponent)! as Date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        let convertedDate = dateFormatter.string(from: dateTime as Date)
+        
+        return "\(convertedDate)"
     }
     
     func animateUmbraSelection() {
