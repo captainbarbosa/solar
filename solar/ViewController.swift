@@ -13,6 +13,7 @@ import Mapbox
 class ViewController: UIViewController, MGLMapViewDelegate {
     var timer: Timer?
     var utcSecTime = 61979
+    var vectorSource: MGLVectorSource!
     
     @IBOutlet weak var mapView: MGLMapView!
     
@@ -29,10 +30,10 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
         
-        let source = MGLVectorSource(identifier: "eclipse-umbra", configurationURL: URL(string: "mapbox://nbb12805.a9ot0w9k")!)
-        style.addSource(source)
+        vectorSource = MGLVectorSource(identifier: "eclipse-umbra", configurationURL: URL(string: "mapbox://nbb12805.a9ot0w9k")!)
+        style.addSource(vectorSource)
         
-        let layer = MGLFillStyleLayer(identifier: "eclipse-umbra-style", source: source)
+        let layer = MGLFillStyleLayer(identifier: "eclipse-umbra-style", source: vectorSource)
         layer.sourceLayerIdentifier = "sixtysec"
         
         style.addLayer(layer)
@@ -52,6 +53,16 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.8107074058))])
             
         }
+        
+        // ----- not working
+        let num = 61979
+        let predicate = NSPredicate(format: "UTCSec == %i", num)
+        
+        let selectedFeature = vectorSource.features(sourceLayerIdentifiers: Set(["sixtysec"]), predicate: predicate)
+        // ------------------
+        
+        // TODO: center camera on selected feature
+        
         
         timeLabel.text = "\(timeFormatted(utcSec: utcSecTime))"
     }
