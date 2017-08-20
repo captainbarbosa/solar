@@ -15,6 +15,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     var timerRunning = false
     var utcSecTime = 61920
     var vectorSource: MGLVectorSource!
+    var camera = MGLMapCamera()
     
     @IBOutlet weak var mapView: MGLMapView!
     
@@ -61,7 +62,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     
     func animateUmbraSelection() {
         if timerRunning == false {
-            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(tick), userInfo: nil, repeats: true)
             timerRunning = true
             timerButton.setImage(pauseImage, for: .normal)
         } else {
@@ -88,13 +89,14 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         
         guard let latitude = selectedFeature.first?.attribute(forKey: "CenterLat") as? NSNumber else { return }
         
-        let offsetLatitude = latitude.doubleValue - 0.46
+        let offsetLatitude = latitude.doubleValue - 0.30
         
         guard let longitude = selectedFeature.first?.attribute(forKey: "CenterLon") as? NSNumber else { return }
         
         let center = CLLocationCoordinate2DMake(offsetLatitude, longitude.doubleValue)
-        
-        self.mapView.setCenter(center, zoomLevel: 6.5, animated: true)
+        camera.centerCoordinate = center
+        camera.altitude = 875000
+        mapView.setCamera(camera, withDuration: 1, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear))
         
         self.timeLabel.text = "\(self.timeFormatted(utcSec: self.utcSecTime))"
     }
