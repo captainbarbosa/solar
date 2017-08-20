@@ -35,7 +35,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.setCenter(CLLocationCoordinate2D(latitude: 39.23225, longitude: -99.99470), zoomLevel: 2, animated: false)
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 34.57941, longitude: -102.65625), zoomLevel: 2, animated: false)
         mapView.styleURL = NSURL(string: "mapbox://styles/nbb12805/cj6l0e7ny7nq82sqvesdhjqqf")! as URL
         mapView.delegate = self
         
@@ -48,10 +48,14 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         style.addSource(vectorSource)
         
         let layer = MGLFillStyleLayer(identifier: "eclipse-umbra-style", source: vectorSource)
-        layer.fillColor = MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.5))
+        layer.fillColor = MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.2811111992, green: 0.1403884315, blue: 0.1032482542, alpha: 0.1013217038))
         layer.sourceLayerIdentifier = "60s_umbrageojson"
         
-        style.addLayer(layer)
+        if let cityLabels = style.layer(withIdentifier: "poi-medium") {
+            style.insertLayer(layer, below: cityLabels)
+        } else {
+            style.addLayer(layer)
+        }
     }
     
     
@@ -71,11 +75,11 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         self.utcSecTime += 60
         
         let categoricalStops = [
-            self.utcSecTime: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 0.6049604024))
+            self.utcSecTime: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 0.3488067209))
         ]
         
         if let layer = self.mapView.style?.layer(withIdentifier: "eclipse-umbra-style") as? MGLFillStyleLayer {
-            layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.5))])
+            layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.9187042519, green: 0.4522342096, blue: 0.3300985635, alpha: 0.3027878853))])
         }
         
         let predicate = NSPredicate(format: "UTCSec = %i", self.utcSecTime)
