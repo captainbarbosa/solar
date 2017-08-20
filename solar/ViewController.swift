@@ -64,7 +64,9 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             
             guard let longitude = selectedFeature.first?.attribute(forKey: "CenterLon") as? NSNumber else { return }
             
-            self.mapView.centerCoordinate = CLLocationCoordinate2D(latitude: latitude.doubleValue, longitude: longitude.doubleValue)
+            let center = CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue)
+            
+            self.mapView.setCenter(center, zoomLevel: 6.5, animated: true)
             
             self.timeLabel.text = "\(self.timeFormatted(utcSec: self.utcSecTime))"
         })
