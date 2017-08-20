@@ -44,7 +44,7 @@
                                                     <constraint firstItem="Xkj-aK-Nbu" firstAttribute="leading" secondItem="Ask-Qt-fnL" secondAttribute="leading" id="u0f-Ou-nwC"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-63-mdK">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-63-mdK">
                                                 <rect key="frame" x="57" y="51" width="200" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="91v-ep-5VK"/>
@@ -54,6 +54,14 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzH-DJ-VwT">
+                                                <rect key="frame" x="57" y="61" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="play"/>
+                                                <connections>
+                                                    <action selector="timerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2Y-R6-q1d"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.31764705882352939" green="0.42745098039215684" blue="1" alpha="0.84990368150684936" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -88,6 +96,7 @@
                         <outlet property="mapView" destination="GrQ-CZ-Gvz" id="WQF-FK-VmD"/>
                         <outlet property="timeLabel" destination="iEx-63-mdK" id="HhW-Yx-cUn"/>
                         <outlet property="timeView" destination="W8G-di-Bcq" id="rp9-G4-Xpq"/>
+                        <outlet property="timerButton" destination="jzH-DJ-VwT" id="6xY-Iz-Ixt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,4 +104,7 @@
             <point key="canvasLocation" x="140" y="117.39130434782609"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="play" width="50" height="50"/>
+    </resources>
 </document>

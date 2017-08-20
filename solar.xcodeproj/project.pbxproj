@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		058359121F4A1CFA003E62F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058359111F4A1CFA003E62F6 /* Assets.xcassets */; };
 		05E2463F1F1C387000EB26B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2463E1F1C387000EB26B9 /* AppDelegate.swift */; };
 		05E246411F1C387000EB26B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E246401F1C387000EB26B9 /* ViewController.swift */; };
 		05E246441F1C387000EB26B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E246421F1C387000EB26B9 /* Main.storyboard */; };
-		05E246461F1C387000EB26B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05E246451F1C387000EB26B9 /* Assets.xcassets */; };
 		05E246491F1C387000EB26B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05E246471F1C387000EB26B9 /* LaunchScreen.storyboard */; };
 		430433F22130A977C1C1B5CC /* libPods-solar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5DF2363A9EFD0D6DB244EC9 /* libPods-solar.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		058359111F4A1CFA003E62F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		05E2463B1F1C387000EB26B9 /* solar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = solar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05E2463E1F1C387000EB26B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05E246401F1C387000EB26B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		05E246431F1C387000EB26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		05E246451F1C387000EB26B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05E246481F1C387000EB26B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05E2464A1F1C387000EB26B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2D87066880072E1E022D0D7 /* Pods-solar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-solar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-solar/Pods-solar.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +43,7 @@
 		05E246321F1C387000EB26B9 = {
 			isa = PBXGroup;
 			children = (
+				058359111F4A1CFA003E62F6 /* Assets.xcassets */,
 				05E2463D1F1C387000EB26B9 /* solar */,
 				05E2463C1F1C387000EB26B9 /* Products */,
 				5C475B06078F15AAFDCC28C6 /* Pods */,
@@ -64,7 +65,6 @@
 				05E2463E1F1C387000EB26B9 /* AppDelegate.swift */,
 				05E246401F1C387000EB26B9 /* ViewController.swift */,
 				05E246421F1C387000EB26B9 /* Main.storyboard */,
-				05E246451F1C387000EB26B9 /* Assets.xcassets */,
 				05E246471F1C387000EB26B9 /* LaunchScreen.storyboard */,
 				05E2464A1F1C387000EB26B9 /* Info.plist */,
 			);
@@ -150,7 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05E246491F1C387000EB26B9 /* LaunchScreen.storyboard in Resources */,
-				05E246461F1C387000EB26B9 /* Assets.xcassets in Resources */,
+				058359121F4A1CFA003E62F6 /* Assets.xcassets in Resources */,
 				05E246441F1C387000EB26B9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
