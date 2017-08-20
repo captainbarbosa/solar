@@ -21,13 +21,17 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var dateView: UIView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.setCenter(CLLocationCoordinate2D(latitude: 39.23225, longitude: -97.91015), zoomLevel: 2, animated: false)
+        mapView.styleURL = NSURL(string: "mapbox://styles/nbb12805/cj6l0e7ny7nq82sqvesdhjqqf")! as URL
         mapView.delegate = self
         
         timeView.layer.cornerRadius = timeView.frame.size.height / 8
+        timeView.layer.masksToBounds = true
     }
     
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
@@ -49,11 +53,11 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             self.utcSecTime += 60
             
             let categoricalStops = [
-                self.utcSecTime: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1))
+                self.utcSecTime: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 0.6049604024))
             ]
             
             if let layer = self.mapView.style?.layer(withIdentifier: "eclipse-umbra-style") as? MGLFillStyleLayer {
-                layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.8107074058))])
+                layer.fillColor = MGLStyleValue(interpolationMode: .categorical, sourceStops: categoricalStops, attributeName: "UTCSec", options: [.defaultValue: MGLStyleValue<UIColor>(rawValue: #colorLiteral(red: 1, green: 0.3883662726, blue: 0.278445029, alpha: 0.5))])
             }
             
             let predicate = NSPredicate(format: "UTCSec = %i", self.utcSecTime)
@@ -62,9 +66,11 @@ class ViewController: UIViewController, MGLMapViewDelegate {
             
             guard let latitude = selectedFeature.first?.attribute(forKey: "CenterLat") as? NSNumber else { return }
             
+            let offsetLatitude = latitude.doubleValue - 0.46
+            
             guard let longitude = selectedFeature.first?.attribute(forKey: "CenterLon") as? NSNumber else { return }
             
-            let center = CLLocationCoordinate2DMake(latitude.doubleValue, longitude.doubleValue)
+            let center = CLLocationCoordinate2DMake(offsetLatitude, longitude.doubleValue)
             
             self.mapView.setCenter(center, zoomLevel: 6.5, animated: true)
             
@@ -88,7 +94,7 @@ class ViewController: UIViewController, MGLMapViewDelegate {
         let dateTime = userCalendar.date(from: dateComponent)! as Date
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = DateFormatter.Style.none
         dateFormatter.timeStyle = DateFormatter.Style.short
         let convertedDate = dateFormatter.string(from: dateTime as Date)
         
