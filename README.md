@@ -2,6 +2,8 @@
 
 Solar is an iOS demo application created to visualize the solar eclipse that occurred on [August 21st, 2017](https://en.wikipedia.org/wiki/Solar_eclipse_of_August_21,_2017). The application tracks the movement of the umbra along the path of totality.
 
+![result](readme-images/result.gif)
+
 # How to run it
 
 Clone or download this repository and then run `pod install` within the directory of the project. Then, you can open and run the resulting `.xcworkspace` file in Xcode.
@@ -11,7 +13,7 @@ Clone or download this repository and then run `pod install` within the director
 A combination of several tools was used to create this application. Below is a summary of what each tool was used for:
 
 - **[NASA Scientific Visualization Studio](https://svs.gsfc.nasa.gov/4518)** - the source data for this project
-- **[QGIS]** - for geospatial editing
+- **[QGIS](http://www.qgis.org/)** - for geospatial editing
 - **[Tippecanoe](https://github.com/mapbox/tippecanoe)** - for tileset creation
 - **[Mapbox Studio](https://www.mapbox.com/studio)** - for the creation of custom map styles
 - **[Mapbox iOS SDK](https://www.mapbox.com/ios-sdk)** - for map development on the iOS platform
@@ -51,6 +53,8 @@ This results looked good:
 
 ![qgis-preview](readme-images/qgis-after.png)
 
+_Umbra shapes spaced at 60 second intervals._
+
 To get this data on my map, I'd need to upload host this data on my Mapbox account so I could pull it into the iOS app later. Mapbox turns any geospatial data you upload into a [tileset](https://www.mapbox.com/help/define-tileset/), and in that process it defines its own [zoom extent](https://www.mapbox.com/help/define-zoom-extent/) of the tileset. So, if you uploaded a tileset it might determine that your data looks best between zoom levels 3 and 8, for example. 
 
 I wanted to have more control over the zoom extent my data would have, so I converted my shapefile to GeoJSON and used Tippecanoe to [define the zoom extent](https://github.com/mapbox/tippecanoe#zoom-levels) I wanted my tileset to have.
@@ -61,14 +65,14 @@ After going through Tippecanoe, my data was converted to MBTiles format. I then 
 
 I started setting up the iOS application by creating a single view application and including the Mapbox iOS SDK via CocoaPods. While I won't go into the small details about the code, here are the main components of the application:
 
-1) The interface
+**1) The interface**
 
-The interface for this application is divided into two main parts - the map and the UIView containing supporting information. The UIView contains a pause/play button and also a label that would eventually display the time at which the umbra would appear over a given region.
+- The interface for this application is divided into two main parts - the map and the UIView containing supporting information. The UIView contains a pause/play button and also a label that would eventually display the time at which the umbra would appear over a given region.
 
-2) Creating the map and adding the data 
+**2) Creating the map and adding the data**
 - I created a custom map style in Mapbox Studio to apply a unique color palette to my map. Mapbox allows you include custom data at runtime, so I also added an `MGLFillStyleLayer` referencing the tileset source I uploaded earlier.
 
-2) Animating the map movement
+**3) Animating the map movement**
 
 To move the map along the path of the umbra shapes, I first created an integer variable called `utcSecTime` that represented the `UTCSecTime` value of the first umbra shape. 
 
@@ -85,5 +89,5 @@ Put it all together, and it looks something like this:
 
 # The End
 
-This was a pretty fun demo to make, and I ended up doing a write-up of it on the [official Mapbox blog](https://blog.mapbox.com/visualizing-the-2017-solar-eclipse-with-the-mapbox-ios-sdk-8cca37fc11b2). Feel free to fork this project and make it your own. Questions? [Twitter](https://twitter.com/capnbrbsa) is usually a good place to reach me.
+This was a pretty fun demo to make, and I ended up doing a write-up of it on the [official Mapbox blog](https://blog.mapbox.com/visualizing-the-2017-solar-eclipse-with-the-mapbox-ios-sdk-8cca37fc11b2). Feel free to fork this project and make it your own. Questions? [Twitter](https://twitter.com/capnbrbsa) is usually a good place to reach me 💁🏻
 
