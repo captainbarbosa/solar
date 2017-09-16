@@ -102,20 +102,21 @@ class ViewController: UIViewController, MGLMapViewDelegate {
     }
     
     func timeFormatted(utcSec: Int) -> String {
-        let userCalendar = NSCalendar.current
         var dateComponent = DateComponents()
+        let userCalendar = NSCalendar.current
+        let dateFormatter = DateFormatter()
         
         dateComponent.year = 2017
-        dateComponent.month = 09
+        dateComponent.month = 08
         dateComponent.day = 21
         dateComponent.hour = Int(utcSec / 3600)
         dateComponent.minute = Int((utcSec / 60) % 60)
         dateComponent.second = Int(utcSec % 60)
-        dateComponent.timeZone = TimeZone(abbreviation: "EST")
+        dateComponent.timeZone = TimeZone(abbreviation: "UTC")
         
         let dateTime = userCalendar.date(from: dateComponent)! as Date
-        
-        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = NSTimeZone(name: "PST")! as TimeZone
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateStyle = DateFormatter.Style.none
         dateFormatter.timeStyle = DateFormatter.Style.short
         let convertedDate = dateFormatter.string(from: dateTime as Date)
